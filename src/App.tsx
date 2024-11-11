@@ -2,104 +2,54 @@ import logoo from '../utils/logoo.gif';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons' 
-import {useHandleClicks} from '../hooks/useHandleClicks'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useHandleClicks } from '../hooks/useHandleClicks';
+import './LoginPage.css';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const {handlePasswordChange,handleUsernameChange,error,onLoginClick,username,password} = useHandleClicks();
+  const [showPassword, setShowPassword] = useState(false);
+  const { handlePasswordChange, handleUsernameChange, error, onLoginClick, username, password } = useHandleClicks();
 
-  const onLogin = (e: any) => {
+  const onLogin = (e) => {
+    e.preventDefault();
     onLoginClick(e, navigate, username, password);
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', minHeight: '100vh',  width: '100vw' }}>
-      <div className="login-container" style={{ backgroundColor: 'white', padding: '20px', borderRadius: '10px', height: '94%', width: '97%', textAlign: 'center', }}>
-        <img
-          src={logoo}
-          alt="logo"
-          style={{
-            alignSelf: 'center',
-            width: '350px',
-            height: 'auto',
-            marginBottom: '-360px',
-            marginTop: '-20px',
-            marginInlineStart: '-25px',
-  }}
-/>
-
-        <h2 style={{ marginTop: '310px', marginBottom: '-5px', color: 'black', marginInlineStart: '-12px' }}>LOGIN</h2>
-        <form onSubmit={onLogin} style={{ margin: '10px 0' }}>
-          <div style={{ textAlign: 'left', marginBottom: '7px' }}>
-            <label style={{ fontSize: 14, display: 'block', marginBottom: '1px', color:'black', marginInlineStart: '592px' }}>Username:</label>
+    <div className="login-page">
+      <div className="login-container">
+        <img src={logoo} alt="logo" className="login-logo" />
+        <h2 className="login-title">LOGIN</h2>
+        <form onSubmit={onLogin} className="login-form">
+          <div className="input-group">
+            <label className="input-label">Username:</label>
             <input
               type="text"
               name="username"
-              style={{
-                width: '275px',
-                padding: '8px',
-                backgroundColor: '#F08080',
-                border: 'none',
-                borderRadius: '10px',
-                marginInlineStart: '590px',
-              }}
-
-
+              className="login-input"
               onChange={(e) => handleUsernameChange(e.target.value)}
             />
           </div>
-          <div style={{ textAlign: 'left', marginBottom: '30px', }}>
-            <label style={{ fontSize: 14, display: 'block', marginBottom: '1px', color: 'black', marginInlineStart: '592px' }}>Password:</label>
-            <div style={{ position: 'relative' }}>
+          <div className="input-group">
+            <label className="input-label">Password:</label>
+            <div className="password-container">
               <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
-                style={{
-                  width: '275px',
-                  padding: '8px',
-                  backgroundColor: '#F08080',
-                  border: 'none',
-                  borderRadius: '10px',
-                  marginInlineStart: '590px'
-                }}
-
-
+                className="login-input"
                 onChange={(e) => handlePasswordChange(e.target.value)}
               />
               <span
                 onClick={() => setShowPassword(!showPassword)}
-                style={{
-                  position: 'absolute',
-                  right: '10px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  cursor: 'pointer',
-                }}
+                className="toggle-password"
               >
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}  style={{ color: 'black', marginInline: '600px' }} />
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </span>
             </div>
           </div>
-
-          {error && <p style={{ color: 'red', marginBottom: '20px', marginTop: '-30px', fontSize: 13, marginInlineStart: '-14px' }}>{error}</p>}
-
-          <button
-            type="submit"
-            style={{
-              width: '290px',
-              padding: '10px',
-              backgroundColor: 'maroon',
-              border: 'none',
-              borderRadius: '10px',
-              color: 'white',
-              fontSize: 16,
-              marginBottom: '30px',
-              marginInlineStart: '-10px'
-            }}
-            onClick={onLogin}
-          >
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit" className="login-button">
             Sign In
           </button>
         </form>
