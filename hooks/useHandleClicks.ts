@@ -28,7 +28,7 @@ export function useHandleClicks() {
                 return; 
             }
     
-            const response = await axios.get('http://192.168.100.127:3000/barangay/getBarangay', {
+            const response = await axios.get('http://db-production-c620.up.railway.app/barangay/getBarangay', {
                 params: {
                     username: username,
                     password: password
