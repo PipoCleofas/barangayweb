@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { CSSProperties,useEffect, useState } from 'react';
 import axios from 'axios';
 
 function ServiceRequestList() {
@@ -66,30 +66,30 @@ function ServiceRequestList() {
 }
 
 // Styles
-const containerStyle = {
+const containerStyle: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center', // Centers items horizontally
-  justifyContent: 'center', // Centers items vertically
-  backgroundColor: '#f5d2d1', // Light pink background color
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#f5d2d1',
   padding: '20px',
-  width: '100vw', // Full viewport width
-  height: '100vh', // Full viewport height
-  overflow: 'auto', // Allows scrolling if content overflows
+  width: '100vw',
+  height: '100vh',
+  overflow: 'auto',
   boxSizing: 'border-box',
 };
 
-const requestCardStyle = {
+const requestCardStyle: CSSProperties = {
   backgroundColor: '#e9ecef',
   padding: '20px',
   borderRadius: '10px',
   marginBottom: '20px',
   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-  width: '300px', // Fixed width for consistent card size
-  textAlign: 'center', // Center text inside each card
+  width: '300px',
+  textAlign: 'center',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center', // Center content within each card
+  alignItems: 'center',
 };
 
 export function handleAxiosError(error: any): string {
