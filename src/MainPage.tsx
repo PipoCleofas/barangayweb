@@ -17,7 +17,7 @@ function ServiceRequestList() {
           return;
         }
         
-        const response = await axios.get('http://db-production-c620.up.railway.app/servicerequest/getRequestsBarangay', {
+        const response = await axios.get('http://fearless-growth-production.up.railway.app/servicerequest/getRequestsBarangay', {
           params: { barangay: uname }
         });
         
