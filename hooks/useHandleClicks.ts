@@ -28,7 +28,7 @@ export function useHandleClicks() {
                 return; 
             }
     
-            const response = await axios.get('http://fearless-growth-production.up.railway.app/barangay/getBarangay', {
+            const response = await axios.get('https://fearless-growth-production.up.railway.app/barangay/getBarangay', {
                 params: {
                     username: username,
                     password: password
